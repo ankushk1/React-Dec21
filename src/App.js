@@ -1,23 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import FirstComponent from "./Components/FirstComponent";
+import ClassComp from "./Components/ClassComp";
+import { useState, createContext } from "react";
+import ListItem from "./Components/ListItem";
+import ComponentA from "./Components/ComponentA";
+import FormComponent from "./Components/FormComponent";
 
+const user = {
+  name: "ABC",
+  age: 40
+};
+
+const arr = [1, 2, 3];
+
+export const messageContext = createContext(null);
 function App() {
+  const car = {
+    carName: "BMW",
+    color: "black"
+  };
+
+  const [propsFromChild, setPropsFromChild] = useState(null);
+
+  const [mount, setMount] = useState(true);
+
+  const onChangeMount = () => {
+    setMount(!mount);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <h2>
+        {user.name}'s age is {user.age}
+        <br />
+        {arr}
+      </h2> */}
+      {/* <FirstComponent username="Sam" age={11} numArr={[1,2,3,4]} carObj = {car}>
+        {car}
+      */}
+      {/* <FirstComponent setPropsFromChild={setPropsFromChild}/>
+      <div>Div</div> */}
+      {/* <ListItem/> */}
+      {/* <FirstComponent/>  */}
+      {mount ? <FirstComponent /> : null}
+      <button onClick={onChangeMount}>Mount/unmount</button>
+      {/* <messageContext.Provider value={"Form component App"}>
+        <ComponentA />
+      </messageContext.Provider> */}
+      {/* <FormComponent/> */}
     </div>
   );
 }
