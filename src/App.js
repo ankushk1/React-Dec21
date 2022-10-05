@@ -6,6 +6,7 @@ import { useState, createContext } from "react";
 import ListItem from "./Components/ListItem";
 import ComponentA from "./Components/ComponentA";
 import FormComponent from "./Components/FormComponent";
+import UseReducer from "./Components/UseReducer";
 
 const user = {
   name: "ABC",
@@ -42,12 +43,13 @@ function App() {
       <div>Div</div> */}
       {/* <ListItem/> */}
       {/* <FirstComponent/>  */}
-      {mount ? <FirstComponent /> : null}
-      <button onClick={onChangeMount}>Mount/unmount</button>
+      {/* {mount ? <FirstComponent /> : null} */}
+      {/* <button onClick={onChangeMount}>Mount/unmount</button> */}
       {/* <messageContext.Provider value={"Form component App"}>
         <ComponentA />
       </messageContext.Provider> */}
       {/* <FormComponent/> */}
+      <UseReducer/>
     </div>
   );
 }
