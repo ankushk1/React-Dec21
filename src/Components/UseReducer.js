@@ -6,8 +6,10 @@ const UseReducer = () => {
     count: 0,
     count2: 10,
     user: {
-      name: ""
-    }
+      name: "Name"
+    },
+    input1: "",
+    email: ""
   };
 
   const reducer = (state = initialState, action) => {
@@ -21,28 +23,47 @@ const UseReducer = () => {
       case "increment2":
         return { ...state, count2: state.count2 + action.value };
       case "changeName":
-       state.user.name = "ABC"
-       return {...state, user:{...state.user, name:"changed"}}
-
+        return { ...state, user: { name: "Changed Name" } };
+      case "inputNameChange":
+        return { ...state, input1: action.value };
+      case "inputEmailChange":
+        return { ...state, email: action.value };
     }
   };
 
-  const [state, setState] = useReducer(
-    (state, newState) => {
-      console.log(state, newState)
-      return ({...state, ...newState})
-    }
-    , initialState);
-  console.log(state);
+  const [state, setState] = useReducer((prevState, nextState) => {
+    console.log(prevState);
+    console.log(nextState);
+    return { ...prevState, ...nextState };
+  }, initialState);
+
+  // const [count, setCount] = useReducer(
+  // }, 1);
+
   return (
     <div>
-    {console.log(state)}
-
-      <h3>{state.count}</h3>
+      {/* {console.log(state)} */}
+      {/* <h3>{state.count}</h3>
       <h3>{state.count2}</h3>
-      <h3>{state.user.name}</h3>
-      <button onClick={() => setState({...state, count:1})}>Decrement</button>
-
+      <h3>{state.user.name}</h3> <br /> */}
+      <h3>{state.count}</h3> <br />
+      {/* <input
+        type="text"
+        placeholder="Name"
+        value={state.input1}
+        onChange={(event) => {
+          dispatch({ type: "inputNameChange", value: event.target.value });
+        }}
+      />{" "}
+      <input
+        type="text"
+        placeholder="Email"
+        value={state.email}
+        onChange={(event) => {
+          dispatch({ type: "inputEmailChange", value: event.target.value });
+        }}
+      />{" "} */}
+      <br />
       {/* <button onClick={() => dispatch({ type: "increment", value: 10 })}>
         Increment
       </button>
@@ -51,9 +72,12 @@ const UseReducer = () => {
       <button onClick={() => dispatch({ type: "increment2", value: 5 })}>
         Increment2
       </button>
-      <button onClick={() => dispatch({ type: "changeName"})}> */}
+      <button onClick={() => dispatch({ type: "changeName" })}>
         Change Name
-      {/* </button> */}
+      </button> */}
+      <button onClick={() => setState({ ...state, count: state.count + 2 })}>
+        Increment Count1
+      </button>
     </div>
   );
 };

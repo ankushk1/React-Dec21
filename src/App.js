@@ -7,6 +7,12 @@ import ListItem from "./Components/ListItem";
 import ComponentA from "./Components/ComponentA";
 import FormComponent from "./Components/FormComponent";
 import UseReducer from "./Components/UseReducer";
+import UseRef from "./Components/UseRef";
+import UseIdHooks from "./Components/UseIdHooks";
+import UseMemo from "./Components/UseMemo";
+import UseCallback from "./Components/UseCallback";
+import UseFormComp from "./Components/UseFormComp";
+import ApiCallComponent from "./Components/ApiCallComponent";
 
 const user = {
   name: "ABC",
@@ -29,6 +35,7 @@ function App() {
   const onChangeMount = () => {
     setMount(!mount);
   };
+
   return (
     <div className="App">
       {/* <h2>
@@ -49,7 +56,12 @@ function App() {
         <ComponentA />
       </messageContext.Provider> */}
       {/* <FormComponent/> */}
-      <UseReducer/>
+      {/* <UseReducer/> */}
+      {/* <UseRef/> */}
+      {/* <UseMemo/> */}
+      {/* <UseCallback/> */}
+      {/* <UseFormComp/> */}
+      <ApiCallComponent/>
     </div>
   );
 }
