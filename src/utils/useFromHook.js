@@ -58,6 +58,7 @@ export const useFetch = (url, value) => {
   const [data, setData] = useState(null);
 
   const fetchData = async () => {
+
     fetch(`${url}/${value}`)
       .then((response) => response.json())
       .then((json) => setData(json));

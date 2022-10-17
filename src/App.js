@@ -13,7 +13,11 @@ import UseMemo from "./Components/UseMemo";
 import UseCallback from "./Components/UseCallback";
 import UseFormComp from "./Components/UseFormComp";
 import ApiCallComponent from "./Components/ApiCallComponent";
-
+import CounterComp from "./HOC/CounterComp";
+import HoverComp from "./HOC/HoverComp";
+import PropComp from "./Components/PropComp";
+import ApiCall from "./Components/ApiCall";
+import Todo from "./Components/Todo";
 const user = {
   name: "ABC",
   age: 40
@@ -29,7 +33,7 @@ function App() {
   };
 
   const [propsFromChild, setPropsFromChild] = useState(null);
-
+  console.log(propsFromChild);
   const [mount, setMount] = useState(true);
 
   const onChangeMount = () => {
@@ -61,7 +65,13 @@ function App() {
       {/* <UseMemo/> */}
       {/* <UseCallback/> */}
       {/* <UseFormComp/> */}
-      <ApiCallComponent/>
+      {/* <ApiCallComponent/> */}
+      {/* <CounterComp name={"Sam"}/>
+      <br />
+      <HoverComp age={10}/> */}
+      {/* <PropComp name="Sam" setPropsFromChild={setPropsFromChild} /> */}
+      {/* <ApiCall/> */}
+      <Todo/>
     </div>
   );
 }
