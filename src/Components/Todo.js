@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
+import TodoItemDetails from "./TodoItemDetails";
 
 const Todo = () => {
   const [input, setInput] = useState("");
@@ -69,6 +70,51 @@ const Todo = () => {
     localStorage.setItem("todos", JSON.stringify(todosArr));
   }, [todosArr]);
 
+  const getAllTodos = () => {
+    console.log("getAllTodos");
+    return todosArr.map((todo, index) => (
+      <TodoItemDetails
+        key={index}
+        todo={todo}
+        onCompleteHandler={onCompleteHandler}
+        onEditHandler={onEditHandler}
+        onHandleDelete={onHandleDelete}
+      />
+    ));
+  };
+
+  const getCompleted = () => {
+    console.log("getCompleted");
+    return todosArr.map(
+      (todo, index) =>
+        todo.isCompleted && (
+          <TodoItemDetails
+            key={index}
+            todo={todo}
+            onCompleteHandler={onCompleteHandler}
+            onEditHandler={onEditHandler}
+            onHandleDelete={onHandleDelete}
+          />
+        )
+    );
+  };
+
+  const getPending = () => {
+    console.log("getPending");
+    return todosArr.map(
+      (todo, index) =>
+        !todo.isCompleted && (
+          <TodoItemDetails
+            key={index}
+            todo={todo}
+            onCompleteHandler={onCompleteHandler}
+            onEditHandler={onEditHandler}
+            onHandleDelete={onHandleDelete}
+          />
+        )
+    );
+  };
+
   return (
     <div className="container">
       <h1>Todo App</h1>
@@ -118,36 +164,12 @@ const Todo = () => {
           Pending
         </button>
       </div>
+      <div className="todo-container">{filter == "All" && getAllTodos()}</div>
       <div className="todo-container">
-        {todosArr.map((todo, index) => ( 
-          <ul
-            style={{ listStyle: "none" }}
-            className="row mt-3 d-flex align-items-center"
-          >
-            <li className="col-6 text-center  fs-4 ms-5 ">
-              <span onClick={() => onCompleteHandler(todo.id)}>
-                {!todo.isCompleted ? (
-                  <i className="fa-solid fa-stopwatch me-2 p-3"></i>
-                ) : (
-                  <i className="fa-solid fa-circle-check me-2 p-3"></i>
-                )}
-              </span>
-              {todo.text}
-            </li>
-            <button
-              className="col-auto btn btn-secondary me-2 px-3 h-75"
-              onClick={() => onEditHandler(todo.text, todo.id)}
-            >
-              Edit
-            </button>
-            <button
-              className="col-auto btn btn-danger h-75"
-              onClick={() => onHandleDelete(todo.id)}
-            >
-              Delete
-            </button>
-          </ul>
-        ))}
+        {filter == "Completed" && getCompleted()}
+      </div>
+      <div className="todo-container">
+        {filter == "Pending" && getPending()}
       </div>
     </div>
   );

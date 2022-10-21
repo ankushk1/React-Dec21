@@ -18,6 +18,9 @@ import HoverComp from "./HOC/HoverComp";
 import PropComp from "./Components/PropComp";
 import ApiCall from "./Components/ApiCall";
 import Todo from "./Components/Todo";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+
 const user = {
   name: "ABC",
   age: 40
@@ -71,7 +74,9 @@ function App() {
       <HoverComp age={10}/> */}
       {/* <PropComp name="Sam" setPropsFromChild={setPropsFromChild} /> */}
       {/* <ApiCall/> */}
-      <Todo/>
+      {/* <Todo/> */}
+
+      
     </div>
   );
 }
