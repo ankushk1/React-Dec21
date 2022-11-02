@@ -4,38 +4,56 @@ export class ClassComp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      num1:0,
-      user:{
-        
-      }
+      num1: 0,
+      user: {}
     };
-    console.log('constructor');
+    console.log("constructor");
   }
 
   componentWillMount() {
     //api data
-    console.log('Component will mount')
+    console.log("Component will mount");
     this.setState({
-      user:{
-        name:"ABC"
+      user: {
+        name: "ABC"
       }
-    })
+    });
   }
 
-  componentDidMount(){
-    console.log('componentDidMount')
+  componentDidMount() {
+    console.log("componentDidMount");
+    // fetch('http://localhost:8000/user/signup',{
+    //   method:"POST",
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     firstname:"abc",
+    //     lastname:"dd",
+    //     email:"a1@g.com",
+    //     password:123
+    //   })
+    // })
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log(nextState);
+    console.log(nextProps);
+    if (nextState.num1 == 1) return false;
+    return true;
   }
 
   componentWillUpdate() {
-    console.log('componentWillUpdate')
+    console.log("componentWillUpdate");
   }
 
   componentDidUpdate() {
-    console.log('componentDidUpdate')
+    console.log("componentDidUpdate");
   }
 
   componentWillUnmount() {
-    console.log('componentWillUnmount')
+    console.log("componentWillUnmount");
   }
 
   onIcrement() {
@@ -59,7 +77,7 @@ export class ClassComp extends Component {
   }
 
   render() {
-    console.log('render');
+    console.log("render");
     return (
       <div>
         {/* {console.log("render", this.state)} */}

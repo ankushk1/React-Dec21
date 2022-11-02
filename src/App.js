@@ -20,6 +20,7 @@ import ApiCall from "./Components/ApiCall";
 import Todo from "./Components/Todo";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
+import CounterRedux from "./Components/CounterRedux";
 
 const user = {
   name: "ABC",
@@ -36,7 +37,6 @@ function App() {
   };
 
   const [propsFromChild, setPropsFromChild] = useState(null);
-  console.log(propsFromChild);
   const [mount, setMount] = useState(true);
 
   const onChangeMount = () => {
@@ -70,13 +70,14 @@ function App() {
       {/* <UseFormComp/> */}
       {/* <ApiCallComponent/> */}
       {/* <CounterComp name={"Sam"}/>
+      
       <br />
       <HoverComp age={10}/> */}
       {/* <PropComp name="Sam" setPropsFromChild={setPropsFromChild} /> */}
       {/* <ApiCall/> */}
       {/* <Todo/> */}
-
-      
+      {/* <CounterRedux /> */}
+      <ClassComp name="abc"/>
     </div>
   );
 }

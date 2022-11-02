@@ -6,8 +6,16 @@ const Home = () => {
   const navigate = useNavigate()
 
   const onNavigate = () => {
-    navigate(-2)
-    navigate("/")
+    // navigate(-2)
+    navigate("/signup/10", {
+      state: {
+        message: "Data from home.js",
+        data: {
+          name: "ABC",
+          id:2
+        }
+      }
+    })
   }
 
   return (
@@ -16,8 +24,6 @@ const Home = () => {
       <button className='btn btn-secondary' onClick={()=> onNavigate()}>Navigate</button>
       </div>
     </div>
-
-
   )
 }
 

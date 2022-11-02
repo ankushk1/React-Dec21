@@ -31,11 +31,7 @@ const UseReducer = () => {
     }
   };
 
-  const [state, setState] = useReducer((prevState, nextState) => {
-    console.log(prevState);
-    console.log(nextState);
-    return { ...prevState, ...nextState };
-  }, initialState);
+  const [state, dispatch] = useReducer(reducer ,initialState);
 
   // const [count, setCount] = useReducer(
   // }, 1);
@@ -62,9 +58,9 @@ const UseReducer = () => {
         onChange={(event) => {
           dispatch({ type: "inputEmailChange", value: event.target.value });
         }}
-      />{" "} */}
+      />{" "} */} 
       <br />
-      {/* <button onClick={() => dispatch({ type: "increment", value: 10 })}>
+      <button onClick={() => dispatch({ type: "increment", value: 10 })}>
         Increment
       </button>
       <button onClick={() => dispatch({ type: "decrement" })}>Decrement</button>
@@ -74,9 +70,9 @@ const UseReducer = () => {
       </button>
       <button onClick={() => dispatch({ type: "changeName" })}>
         Change Name
-      </button> */}
-      <button onClick={() => setState({ ...state, count: state.count + 2 })}>
-        Increment Count1
+      </button>
+      <button onClick={''}>
+        Increment Coun1
       </button>
     </div>
   );

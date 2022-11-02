@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 const ApiCall = () => {
   //state
 
+  const stateFromStore = useSelector((state) => state.count);
+  console.log(stateFromStore)
   const [obj1, setObj1] = useState({
     inputVal: "",
     filter: "",

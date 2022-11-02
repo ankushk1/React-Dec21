@@ -2,18 +2,22 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TodoItemDetails from "./TodoItemDetails";
-
+import { setTodos } from "../actions/counterActions";
+import { useDispatch, useSelector } from "react-redux";
 const Todo = () => {
   const [input, setInput] = useState("");
-  const [todosArr, setTodosArr] = useState(() => {
-    const todosFromLC = JSON.parse(localStorage.getItem("todos"));
-    return todosFromLC && todosFromLC.length > 0 ? todosFromLC : [];
-  });
+  const [todosArr, setTodosArr] = useState([]);
   const [isEditing, setIsEditing] = useState({
     edit: false,
     todoId: ""
   });
   const [filter, setFilter] = useState("All");
+  const dispatch = useDispatch();
+  const todosSelector = useSelector((state) => state.todos);
+
+  useEffect(() => {
+    setTodosArr(todosSelector);
+  }, [todosSelector]);
 
   const onTodoAddHandler = () => {
     if (!input) return;
@@ -67,11 +71,11 @@ const Todo = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todosArr));
+    // localStorage.setItem("todos", JSON.stringify(todosArr));
+    dispatch(setTodos(todosArr));
   }, [todosArr]);
 
   const getAllTodos = () => {
-    console.log("getAllTodos");
     return todosArr.map((todo, index) => (
       <TodoItemDetails
         key={index}

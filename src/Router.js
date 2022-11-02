@@ -13,7 +13,6 @@ const Router = () => {
             end
             to="/"
             className={({ isActive }) => (isActive ? "text-danger" : "")}
-            style={{ fontFamily: "cursive" }}
           >
             Home
           </NavLink>
@@ -40,7 +39,7 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signup/:id/" element={<SignUp />} />
       </Routes>
     </div>
   );
