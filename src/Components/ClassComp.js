@@ -22,19 +22,7 @@ export class ClassComp extends Component {
 
   componentDidMount() {
     console.log("componentDidMount");
-    // fetch('http://localhost:8000/user/signup',{
-    //   method:"POST",
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     firstname:"abc",
-    //     lastname:"dd",
-    //     email:"a1@g.com",
-    //     password:123
-    //   })
-    // })
+    
   }
 
   shouldComponentUpdate(nextProps, nextState) {

@@ -1,46 +1,25 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
-import About from "./Pages/About";
-import Home from "./Pages/Home";
-import SignUp from "./Pages/SignUp";
+import SignIn from "./ProductsApp/User/SignIn";
+import SignUp from "./ProductsApp/User/SignUp";
+import { ToastContainer, toast } from 'react-toastify';
+import ProductList from "./ProductsApp/Products/ProductList";
+import ProductDetails from "./ProductsApp/Products/ProductDetails";
 
 const Router = () => {
   return (
-    <div className="text-center">
+    <div className="">
       <div>
-        <li>
-          <NavLink
-            end
-            to="/"
-            className={({ isActive }) => (isActive ? "text-danger" : "")}
-          >
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/about"
-            style={({ isActive }) =>
-              isActive ? { fontStyle: "italic" } : undefined
-            }
-          >
-            About
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/signup"
-            className={({ isActive }) => (isActive ? "text-danger" : "")}
-          >
-            Signup
-          </NavLink>
-        </li>
+        <ToastContainer/>
       </div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/signup/:id/" element={<SignUp />} />
-      </Routes>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<SignUp />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/products" element={<ProductList />} />
+          <Route path="/product-details" element={<ProductDetails />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };

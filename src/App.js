@@ -17,9 +17,7 @@ import CounterComp from "./HOC/CounterComp";
 import HoverComp from "./HOC/HoverComp";
 import PropComp from "./Components/PropComp";
 import ApiCall from "./Components/ApiCall";
-import Todo from "./Components/Todo";
-import Home from "./Pages/Home";
-import About from "./Pages/About";
+
 import CounterRedux from "./Components/CounterRedux";
 
 const user = {
