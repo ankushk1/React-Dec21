@@ -31,7 +31,7 @@ const CreateProduct = () => {
   useEffect(() => {
     (async () => {
       const apiResponse = await getCategories();
-      setCategories(apiResponse.data.categories);
+      apiResponse?.data?.categories && setCategories(apiResponse.data.categories);
     })();
   }, []);
 
@@ -113,7 +113,7 @@ const CreateProduct = () => {
             onChange={(event) => onHandleChange(event)}
           >
             <option value="">None</option>
-            {categories.map((cat) => (
+            {categories.length > 0 && categories.map((cat) => (
               <option key={cat._id} value={cat._id}>
                 {cat.name}
               </option>

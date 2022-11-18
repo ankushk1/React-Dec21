@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const apiUrl = "http://localhost:8000";
+// const apiUrl = "http://localhost:8000";
+const apiUrl = "https://dec21-node.herokuapp.com";
 
 export const signUp = async (user) => {
   try {
