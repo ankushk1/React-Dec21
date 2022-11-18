@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { signIn } from '../../utils/ApiUtils';
 import { error, success } from '../../utils/notificationUtils';
 import { useFormHook } from '../../utils/useFromHook';
@@ -10,10 +10,11 @@ const SignIn = () => {
 
   const onSubmit = async () => {
     const apiResponse = await signIn(values);
-    console.log(apiResponse);
     if (apiResponse.status == 200) {
       success(apiResponse.data.message)
       localStorage.setItem('token', apiResponse.data.token)
+      localStorage.setItem('userId', apiResponse.data.userId)
+      localStorage.setItem('role', apiResponse.data.userRole)
       navigate('/products')
     } else {
       error(apiResponse.data.message)
@@ -21,7 +22,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container text-center">
       <h3 className="my-3">Sign In</h3>
       <div>
         <form className="d-flex align-items-center flex-column">
@@ -43,6 +44,9 @@ const SignIn = () => {
           <button className="btn btn-secondary mt-4" onClick={onSubmit}>
             Sign In
           </button>
+        </div>
+        <div className="mt-3 fs-5">
+          Don't have an account? <Link to="/">Sign up</Link> here.
         </div>
       </div>
     </div>

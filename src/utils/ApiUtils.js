@@ -33,10 +33,85 @@ export const getProducts = async () => {
   try {
     const response = await axios({
       method: "GET",
-      url: `${apiUrl}/product/getProducts`,
+      url: `${apiUrl}/product/getProducts`
     });
     return response;
   } catch (err) {
+    return err.response;
+  }
+};
+
+export const getCategories = async () => {
+  try {
+    const response = await axios({
+      method: "GET",
+      url: `${apiUrl}/category/getCategories`,
+      headers: {
+        "access-token": localStorage.getItem("token"),
+        "Content-Type": "application/json",
+        'Accept': "application/json"
+      }
+    });
+    return response;
+  } catch (err) {
+    return err.response;
+  }
+};
+
+export const createProduct = async (productData) => {
+  try {
+    const response = await axios({
+      method: "POST",
+      url: `${apiUrl}/product/createProduct`,
+      headers: {
+        "access-token": localStorage.getItem("token"),
+        'accept': "application/json",
+        "Content-Type": "application/json",
+      },
+      data: productData
+    });
+    return response;
+  } catch (err) {
+    console.log(err)
+    return err.response;
+  }
+};
+
+
+export const updateProduct = async (productData, id) => {
+  try {
+    const response = await axios({
+      method: "PUT",
+      url: `${apiUrl}/product/updateProduct/${id}`,
+      headers: {
+        "access-token": localStorage.getItem("token"),
+        'accept': "application/json",
+        "Content-Type": "application/json",
+      },
+      data: productData
+    });
+    return response;
+  } catch (err) {
+    console.log(err)
+    return err.response;
+  }
+};
+
+
+export const deleteProduct = async (id) => {
+  try {
+    const response = await axios({
+      method: "DELETE",
+      url: `${apiUrl}/product/deleteProduct/${id}`,
+      headers: {
+        "access-token": localStorage.getItem("token"),
+        'accept': "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    return response;
+  } catch (err) {
+    console.log(err)
     return err.response;
   }
 };

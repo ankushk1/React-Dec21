@@ -15,7 +15,8 @@ export const useFormHook = () => {
   return {
     values,
     onHandleChange,
-    onSubmit
+    onSubmit,
+    setValues
   };
 };
 

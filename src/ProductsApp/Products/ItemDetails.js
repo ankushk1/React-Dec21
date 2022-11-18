@@ -7,8 +7,8 @@ const ItemDetails = ({
   view
 }) => {
   return (
-    <div className="card text-center" style={{ width: "18rem" }}>
-      {/* <img className="card-img-top" src="..." alt="Card image cap" /> */}
+    <div className="card text-center mt-3" style={{ width: "18rem" }}>
+      {/* <img className="card-img-top" alt="Card image cap" /> */}
       <div className="card-body">
         <h5 className="card-title">{name}</h5>
         <p className="card-text">{description}</p>

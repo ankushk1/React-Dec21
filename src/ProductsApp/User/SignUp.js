@@ -1,23 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { signUp } from "../../utils/ApiUtils";
 import { error, success } from "../../utils/notificationUtils";
 import { useFormHook } from "../../utils/useFromHook";
 const SignUp = () => {
   const { values, onHandleChange } = useFormHook();
+  const navigate = useNavigate();
 
   const onSubmit = async () => {
     const apiResponse = await signUp(values);
     // console.log(apiResponse);
     if (apiResponse.status == 200) {
       success(apiResponse.data.message);
+      navigate('/signin')
     } else {
       error(apiResponse.data.message);
     }
   };
 
   return (
-    <div className="container">
+    <div className="container text-center">
       <h3 className="my-3">SignUp</h3>
       <div>
         <form className="d-flex align-items-center flex-column">
